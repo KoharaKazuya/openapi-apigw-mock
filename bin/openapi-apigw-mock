@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const { convert } = require("../app.js");
+
+const input = fs.readFileSync("/dev/stdin", "utf8");
+convert(input)
+  .then(output => {
+    process.stdout.write(output);
+  })
+  .catch(err => {
+    console.error(err);
+  });

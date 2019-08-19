@@ -1,0 +1,25 @@
+{
+  "name": "openapi-apigw-mock",
+  "version": "0.1.0",
+  "author": {
+    "name": "KoharaKazuya",
+    "email": "reflect.results@gmail.com",
+    "url": "https://www.koharakazuya.net/"
+  },
+  "bin": {
+    "openapi-apigw-mock": "bin/openapi-apigw-mock"
+  },
+  "dependencies": {
+    "js-yaml": "^3.13.1",
+    "swagger-parser": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "files": [
+    "bin",
+    "app.js"
+  ],
+  "license": "MIT",
+  "main": "app.js"
+}
