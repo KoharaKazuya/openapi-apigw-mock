@@ -1,13 +1,40 @@
 #!/usr/bin/env node
 
+const program = require("commander");
+const chalk = require("chalk");
 const fs = require("fs");
+const util = require("util");
 const { convert } = require("../app.js");
+const { deploy } = require("../aws.js");
 
-const input = fs.readFileSync("/dev/stdin", "utf8");
-convert(input)
-  .then(output => {
-    process.stdout.write(output);
+program
+  .arguments("<file>")
+  .option(
+    "--rest-api-id <value>",
+    "The string identifier of the associated  RestApi"
+  )
+  .option(
+    "--stage-name <value>",
+    "The name of the  Stage resource to get information about"
+  )
+  .action(file => {
+    run(file).catch(err => console.error(err));
   })
-  .catch(err => {
-    console.error(err);
+  .parse(process.argv);
+
+async function run(file) {
+  const input = await util.promisify(fs.readFile)(file, { encoding: "utf8" });
+  const output = await convert(input);
+
+  const { operation, restApiId, endpoint } = await deploy({
+    body: output,
+    restApiId: program.restApiId,
+    stageName: program.stageName
   });
+
+  console.log(chalk.green("success") + " " + operation);
+  console.log();
+  console.log(chalk.dim("[Deployed API Information]"));
+  console.log("REST API ID: " + chalk.bold(restApiId));
+  console.log("API Endpoint Base: " + chalk.bold.underline(endpoint));
+}

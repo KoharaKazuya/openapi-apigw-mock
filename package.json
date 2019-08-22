@@ -1,25 +1,52 @@
 {
   "name": "openapi-apigw-mock",
-  "version": "0.1.0",
+  "description": "A command generates mock server on AWS API Gateway from OpenAPI (v3) document quickly.",
+  "version": "0.0.1",
   "author": {
     "name": "KoharaKazuya",
     "email": "reflect.results@gmail.com",
     "url": "https://www.koharakazuya.net/"
   },
   "bin": {
-    "openapi-apigw-mock": "bin/openapi-apigw-mock"
+    "openapi-apigw-mock": "bin/openapi-apigw-mock",
+    "openapi-apigw-mock-convert": "bin/openapi-apigw-mock-convert"
   },
+  "bugs": "https://github.com/KoharaKazuya/openapi-apigw-mock/issues",
   "dependencies": {
+    "aws-sdk": "^2.513.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.0",
     "js-yaml": "^3.13.1",
     "swagger-parser": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   },
   "engines": {
     "node": ">=8"
   },
   "files": [
     "bin",
-    "app.js"
+    "app.js",
+    "aws.js"
+  ],
+  "homepage": "https://github.com/KoharaKazuya/openapi-apigw-mock",
+  "keywords": [
+    "api gateway",
+    "aws",
+    "mock",
+    "openapi",
+    "serverless"
   ],
   "license": "MIT",
-  "main": "app.js"
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KoharaKazuya/openapi-apigw-mock.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  }
 }

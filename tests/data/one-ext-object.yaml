@@ -1,0 +1,8 @@
+openapi: 3.0.2
+info:
+  title: one-ext-object
+  version: 1.0.0
+paths:
+  /pets:
+    get:
+      responses: {}

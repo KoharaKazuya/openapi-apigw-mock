@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const program = require("commander");
+const fs = require("fs");
+const { convert } = require("../app.js");
+
+program
+  .arguments("[file]")
+  .action((file = "/dev/stdin") => {
+    const input = fs.readFileSync(file, "utf8");
+
+    convert(input)
+      .then(output => {
+        process.stdout.write(output);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  })
+  .parse(process.argv);
