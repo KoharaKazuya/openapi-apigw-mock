@@ -1,7 +1,7 @@
 {
   "name": "openapi-apigw-mock",
   "description": "A command generates mock server on AWS API Gateway from OpenAPI (v3) document quickly.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": {
     "name": "KoharaKazuya",
     "email": "reflect.results@gmail.com",
